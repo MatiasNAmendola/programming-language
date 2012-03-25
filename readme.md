@@ -9,7 +9,7 @@ inference:
     every man is mortal
     socrates is man
 
-print inference?(socrates is mortal) // true
+print inference['socrates is mortal'] // true
 ```
 
 ###Functions
@@ -25,20 +25,53 @@ print mult(5, 4) // 20
 inference:
     every man is mortal
     socrates is man
-
     ceilingCat is mortal
 
 isMortal(library, x) ->
-    library?(x is mortal)
+    library['x is mortal']
 
 isMan(library, x) ->
-    library?(x is man)
+    library['x is man']
 
 print isMortal(inference, socrates) // true
 print isMan(inference, socrates)    // true
 
 print isMortal(inference, ceilingCat) // true
 print isMan(inference, ceilingCat)    // false
+```
+
+###Syntactic Sugar
+Using keywords:
+
+```js
+inference as
+    david is man
+    every man is mortal
+
+    john is parent of david
+    jake is parent of john
+
+    X is grandparent of Y implies
+        X is parent of A and A is parent of Y
+
+print inference['jake is grandparent of david'] // true
+```
+
+Using symbols:
+
+```js
+inference:
+    man(david)
+    mortal(X) =>
+        man(X)
+
+    parent(john, david)
+    parent(jake, john)
+
+    grandparent(X, Y) =>
+        parent(X, P) && parent(P, Y)
+
+print inference['grandparent(jake, david)'] // true
 ```
 
 ###Reactivity
@@ -63,15 +96,15 @@ print y // 7
 ###Overview
 <table>
     <thead>
-        <tr> <th>Words</th>   <th>Symbols</th> </tr>
+        <tr> <th>Keywords</th> <th>Symbols</th> </tr>
     </thead>
     <tbody>
-        <tr> <td>implies</td> <td>=></td>      </tr>
-        <tr> <td>or</td>      <td>||</td>      </tr>
-        <tr> <td>xor</td>     <td>|||</td>     </tr>
-        <tr> <td>not</td>     <td>!</td>       </tr>
-        <tr> <td>and</td>     <td>&&</td>      </tr>
-        <tr> <td>eqv</td>     <td>===</td>     </tr>
+        <tr> <td>implies</td>  <td>=></td>      </tr>
+        <tr> <td>or</td>       <td>||</td>      </tr>
+        <tr> <td>xor</td>      <td>|||</td>     </tr>
+        <tr> <td>not</td>      <td>!</td>       </tr>
+        <tr> <td>and</td>      <td>&&</td>      </tr>
+        <tr> <td>eqv</td>      <td>===</td>     </tr>
     </tbody>
 </table>
 
@@ -79,11 +112,11 @@ print y // 7
 ###Overview
 <table>
     <thead>
-        <tr> <th>Words</th>     <th>Symbols</th> </tr>
+        <tr> <th>Keywords</th>     <th>Symbols</th> </tr>
     </thead>
     <tbody>
-        <tr> <td>leastone</td>  <td>&&</td>      </tr>
-        <tr> <td>every</td>     <td>===</td>     </tr>
+        <tr> <td>leastone</td>  <td>E</td>      </tr>
+        <tr> <td>every</td>     <td>A</td>     </tr>
     </tbody>
 </table>
 
@@ -91,7 +124,7 @@ print y // 7
 ###Overview
 <table>
     <thead>
-        <tr> <th>Words</th> <th>Symbols</th> </tr>
+        <tr> <th>Keywords</th> <th>Symbols</th> </tr>
     </thead>
     <tbody>
         <tr> <td>eq</td>    <td>==</td>      </tr>
@@ -107,7 +140,7 @@ print y // 7
 ###Overview
 <table>
     <thead>
-        <tr> <th>Words</th>    <th>Symbols</th> </tr>
+        <tr> <th>Keywords</th>    <th>Symbols</th> </tr>
     </thead>
     <tbody>
         <tr> <td>as</td>       <td>:</td>       </tr>
