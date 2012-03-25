@@ -4,26 +4,24 @@
 ##Basic Examples
 
 ###Logic
-```py
+```js
 inference:
     every man is mortal
     socrates is man
 
-print inference?(socrates is mortal)
-// true
+print inference?(socrates is mortal) // true
 ```
 
 ###Functions
-```py
+```js
 mult(x, y) ->
     x * y
 
-print mult(5, 4)
-// 20
+print mult(5, 4) // 20
 ```
 
 ###Synergy
-```py
+```js
 inference:
     every man is mortal
     socrates is man
@@ -36,15 +34,29 @@ isMortal(library, x) ->
 isMan(library, x) ->
     library?(x is man)
 
-print isMortal(inference, socrates)
-// true
-print isMan(inference, socrates)
-// true
+print isMortal(inference, socrates) // true
+print isMan(inference, socrates)    // true
 
-print isMortal(inference, ceilingCat)
-// true
-print isMan(inference, ceilingCat)
-// false
+print isMortal(inference, ceilingCat) // true
+print isMan(inference, ceilingCat)    // false
+```
+
+###Reactivity
+```js
+a -> 5
+b -> a + 1
+
+a -> 6
+print a // 6
+print b // 6
+
+x -> 5
+y <- x + 1
+
+x -> 6
+
+print x // 6
+print y // 7
 ```
 
 ##Propositionals
@@ -55,6 +67,40 @@ print isMan(inference, ceilingCat)
 - not    : !
 - and    : &&
 - eqv    : ===
+<table>
+    <thead>
+        <tr>
+            <th>Words</th>
+            <th>Symbols</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>implies</td>
+            <td>=></td>
+        </tr>
+        <tr>
+            <td>or</td>
+            <td>||</td>
+        </tr>
+        <tr>
+            <td>xor</td>
+            <td>|||</td>
+        </tr>
+        <tr>
+            <td>not</td>
+            <td>!</td>
+        </tr>
+        <tr>
+            <td>and</td>
+            <td>&&</td>
+        </tr>
+        <tr>
+            <td>eqv</td>
+            <td>===</td>
+        </tr>
+    </tbody>
+</table>
 
 ##Predicates
 ###Overview
@@ -78,7 +124,7 @@ print isMan(inference, ceilingCat)
 - observes : <-
 
 
-##Rules and Functions
+##
 
 ##License
 <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">logiko</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="mraxil.us" property="cc:attributionName" rel="cc:attributionURL">Mr Axilus</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
