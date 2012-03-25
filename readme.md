@@ -4,46 +4,48 @@
 ##Basic Examples
 
 ###Logic
-    inference:
-        every man is mortal
-        socrates is man
+```py
+inference:
+    every man is mortal
+    socrates is man
 
-    print inference?(socrates is mortal)
-    // true
+print inference?(socrates is mortal)
+// true
+```
 
 ###Functions
-    mult(x, y) ->
-        x * y
+```py
+mult(x, y) ->
+    x * y
 
-    print mult(5, 4)
-    // 20
-
+print mult(5, 4)
+// 20
+```
 
 ###Synergy
-    inference:
-        every man is mortal
-        socrates is man
+```py
+inference:
+    every man is mortal
+    socrates is man
 
-        ceilingCat is mortal
+    ceilingCat is mortal
 
-    isMortal(library, x) ->
-        library?(x is mortal)
+isMortal(library, x) ->
+    library?(x is mortal)
 
-    isMan(library, x) ->
-        library?(x is man)
+isMan(library, x) ->
+    library?(x is man)
 
-    print isMortal(inference, socrates)
-    // true
-    print isMan(inference, socrates)
-    // true
+print isMortal(inference, socrates)
+// true
+print isMan(inference, socrates)
+// true
 
-    print isMortal(inference, ceilingCat)
-    // true
-    print isMan(inference, ceilingCat)
-    // false
-
-
-
+print isMortal(inference, ceilingCat)
+// true
+print isMan(inference, ceilingCat)
+// false
+```
 
 ##Propositionals
 ###Overview
