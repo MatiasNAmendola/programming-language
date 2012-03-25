@@ -61,70 +61,61 @@ print y // 7
 
 ##Propositionals
 ###Overview
-- implies: =>
-- or     : ||
-- xor    : |||
-- not    : !
-- and    : &&
-- eqv    : ===
 <table>
     <thead>
-        <tr>
-            <th>Words</th>
-            <th>Symbols</th>
-        </tr>
+        <tr> <th>Words</th>   <th>Symbols</th> </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>implies</td>
-            <td>=></td>
-        </tr>
-        <tr>
-            <td>or</td>
-            <td>||</td>
-        </tr>
-        <tr>
-            <td>xor</td>
-            <td>|||</td>
-        </tr>
-        <tr>
-            <td>not</td>
-            <td>!</td>
-        </tr>
-        <tr>
-            <td>and</td>
-            <td>&&</td>
-        </tr>
-        <tr>
-            <td>eqv</td>
-            <td>===</td>
-        </tr>
+        <tr> <td>implies</td> <td>=></td>      </tr>
+        <tr> <td>or</td>      <td>||</td>      </tr>
+        <tr> <td>xor</td>     <td>|||</td>     </tr>
+        <tr> <td>not</td>     <td>!</td>       </tr>
+        <tr> <td>and</td>     <td>&&</td>      </tr>
+        <tr> <td>eqv</td>     <td>===</td>     </tr>
     </tbody>
 </table>
 
 ##Predicates
 ###Overview
-- leastone : E
-- every    : A
+<table>
+    <thead>
+        <tr> <th>Words</th>     <th>Symbols</th> </tr>
+    </thead>
+    <tbody>
+        <tr> <td>leastone</td>  <td>&&</td>      </tr>
+        <tr> <td>every</td>     <td>===</td>     </tr>
+    </tbody>
+</table>
 
 ##Conditionals
 ###Overview
-- eq : ==
-- eqv: ===
-- lt : <
-- gt : >
-- le : <=
-- ge : >=
+<table>
+    <thead>
+        <tr> <th>Words</th> <th>Symbols</th> </tr>
+    </thead>
+    <tbody>
+        <tr> <td>eq</td>    <td>==</td>      </tr>
+        <tr> <td>eqv</td>   <td>===</td>     </tr>
+        <tr> <td>lt</td>    <td>&lt;</td>    </tr>
+        <tr> <td>gt</td>    <td>&gt;</td>    </tr>
+        <tr> <td>le</td>    <td>&lt;=</td>   </tr>
+        <tr> <td>ge</td>    <td>&gt;=</td>   </tr>
+    </tbody>
+</table>
 
 ##Assignment
 ###Overview
-- as       : :
-- is       : =
-- mimics   : ->
-- observes : <-
-
-
-##
+<table>
+    <thead>
+        <tr> <th>Words</th>    <th>Symbols</th> </tr>
+    </thead>
+    <tbody>
+        <tr> <td>as</td>       <td>:</td>       </tr>
+        <tr> <td>is</td>       <td>=</td>       </tr>
+        <tr> <td>mimics</td>   <td>-&gt;</td>   </tr>
+        <tr> <td>observes</td> <td>&lt;-</td>   </tr>
+    </tbody>
+</table>
 
 ##License
 <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">logiko</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="mraxil.us" property="cc:attributionName" rel="cc:attributionURL">Mr Axilus</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
