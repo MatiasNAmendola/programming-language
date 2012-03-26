@@ -22,48 +22,63 @@ print mult(5, 4) // 20
 
 ###Synergy
 ```js
-inference:
+library:
     every man is mortal
     socrates is man
-    ceilingCat is mortal
+    kitteh is mortal
 
-isMortal(library, x) ->
-    library['x is mortal']
+isMortal(x) ->
+    library[x + 'is mortal']
 
-isMan(library, x) ->
-    library['x is man']
+isMan(x) ->
+    library[x + 'is man']
 
-print isMortal(inference, socrates) // true
-print isMan(inference, socrates)    // true
+print isMortal(socrates) // true
+print isMan(socrates)    // true
 
-print isMortal(inference, ceilingCat) // true
-print isMan(inference, ceilingCat)    // false
+print isMortal(kitteh) // true
+print isMan(kitteh)    // false
 ```
 
 ###Syntactic Sugar
 Using keywords:
 
 ```js
-inference as
-    david is man
-    every man is mortal
+parents as
+    david, john, jake is man
+    jane is woman
+    spark is dog
 
-    john is parent of david
-    jake is parent of john
+    every man is mortal, human
+    every woman is mortal, human
+    every dog is mortal
 
-    X is grandparent of Y implies
-        X is parent of A and A is parent of Y
+    parent(jake, john)
+    parent(john, david)
 
-print inference['jake is grandparent of david'] // true
+    grandparent(X, Y) implies
+        parent(X, A) and parent(A, Y)
+
+
+
+print parents['grandparent(jake, david)'] // true
+print parents['X is human']                   // ['david', 'jane']
+print parents['X is mortal']                  // ['david', 'jane', 'spark']
+print parents['leastone dog(X) is human(X)']        // true
 ```
 
 Using symbols:
 
 ```js
-inference:
+parents:
     man(david)
-    mortal(X) =>
-        man(X)
+    man(john)
+    man(jake)
+    woman(jane)
+    dog(spark)
+
+    mortal(X) => man(X) || woman(X) || dog(X)
+    human(X) => man(X) || woman(X)
 
     parent(john, david)
     parent(jake, john)
@@ -71,82 +86,126 @@ inference:
     grandparent(X, Y) =>
         parent(X, P) && parent(P, Y)
 
-print inference['grandparent(jake, david)'] // true
+print parents['grandparent(jake, david)'] // true
+print parents['human(X)']                 // ['david', 'jane']
+print parents['mortal(X)']                // ['david', 'jane', 'spark']
+print parents['!(E.dog(X) === human(X))'] // true
 ```
 
 ###Reactivity
+
+As one would expect:
+
 ```js
 a -> 5
 b -> a + 1
-
 a -> 6
+
 print a // 6
 print b // 6
-
-x -> 5
-y <- x + 1
-
-x -> 6
-
-print x // 6
-print y // 7
 ```
 
-##Propositionals
-###Overview
+Whoah Nelly!:
+
+```js
+a -> 5
+b &lt;- x + 1
+a -> 6
+
+print a // 6
+print b // 7
+```
+
+###Reactive vs. Static
+```js
+library:
+    david, john, dave is man
+    jane is woman
+
+    parent(john, david)
+    parent(dave, john)
+    parent(jane, john)
+
+    grandparent(X, Y) implies
+        parent(X, P) and parent(P, Y)
+
+getStaticGrandparents() ->
+    // **query** returns a list of the unifications of each variable.
+    library.query 'grandparent(X, Y)', (x, y) -> x
+
+getReactiveGrandparents() &lt;-
+    library.query 'grandparent(X, Y)', (x, y) -> x
+
+staticGrandparents   -> getReactiveGrandparents()
+reactiveGrandparents &lt;- getReactiveGrandparents()
+
+print getStaticGrandparents()   // ['dave', 'jane']
+print getReactiveGrandparents() // ['dave', 'jane']
+print staticGrandparents        // ['dave', 'jane']
+print reactiveGrandparents      // ['dave', 'jane']
+
+// Removes any contradictions, i.e., `parent(jane, john)`.
+lib.merge('jane is not parent of john')
+
+print getStaticGrandparents()   // ['dave', 'jane']
+print getReactiveGrandparents() // ['dave']
+print staticGrandparents        // ['dave', 'jane']
+print reactiveGrandparents      // ['dave']
+
+```
+
+##Keywords and Symbols
+###Propositionals
+<table>
+    <thead>
+        <tr> <th>Keywords</th> <th>Symbols</th>    </tr>
+    </thead>
+    <tbody>
+        <tr> <td>implies</td>  <td>=></td>         </tr>
+        <tr> <td>or</td>       <td>||</td>         </tr>
+        <tr> <td>xor</td>      <td>|||</td>        </tr>
+        <tr> <td>not</td>      <td>!</td>          </tr>
+        <tr> <td>and</td>      <td>&amp;&amp;</td> </tr>
+        <tr> <td>eqv</td>      <td>===</td>        </tr>
+    </tbody>
+</table>
+
+###Predicates
+<table>
+    <thead>
+        <tr> <th>Keywords</th>  <th>Symbols</th>     </tr>
+    </thead>
+    <tbody>
+        <tr> <td>is</td>        <td>f(x)</td>        </tr>
+        <tr> <td>leastone</td>  <td>E.predicate</td> </tr>
+        <tr> <td>every</td>     <td>A.predicate</td> </tr>
+    </tbody>
+</table>
+
+###Conditionals
 <table>
     <thead>
         <tr> <th>Keywords</th> <th>Symbols</th> </tr>
     </thead>
     <tbody>
-        <tr> <td>implies</td>  <td>=></td>      </tr>
-        <tr> <td>or</td>       <td>||</td>      </tr>
-        <tr> <td>xor</td>      <td>|||</td>     </tr>
-        <tr> <td>not</td>      <td>!</td>       </tr>
-        <tr> <td>and</td>      <td>&&</td>      </tr>
+        <tr> <td>eq</td>       <td>==</td>      </tr>
         <tr> <td>eqv</td>      <td>===</td>     </tr>
+        <tr> <td>lt</td>       <td>&lt;</td>    </tr>
+        <tr> <td>gt</td>       <td>&gt;</td>    </tr>
+        <tr> <td>le</td>       <td>&lt;=</td>   </tr>
+        <tr> <td>ge</td>       <td>&gt;=</td>   </tr>
     </tbody>
 </table>
 
-##Predicates
-###Overview
-<table>
-    <thead>
-        <tr> <th>Keywords</th>     <th>Symbols</th> </tr>
-    </thead>
-    <tbody>
-        <tr> <td>leastone</td>  <td>E</td>      </tr>
-        <tr> <td>every</td>     <td>A</td>     </tr>
-    </tbody>
-</table>
-
-##Conditionals
-###Overview
-<table>
-    <thead>
-        <tr> <th>Keywords</th> <th>Symbols</th> </tr>
-    </thead>
-    <tbody>
-        <tr> <td>eq</td>    <td>==</td>      </tr>
-        <tr> <td>eqv</td>   <td>===</td>     </tr>
-        <tr> <td>lt</td>    <td>&lt;</td>    </tr>
-        <tr> <td>gt</td>    <td>&gt;</td>    </tr>
-        <tr> <td>le</td>    <td>&lt;=</td>   </tr>
-        <tr> <td>ge</td>    <td>&gt;=</td>   </tr>
-    </tbody>
-</table>
-
-##Assignment
-###Overview
+###Assignment
 <table>
     <thead>
         <tr> <th>Keywords</th>    <th>Symbols</th> </tr>
     </thead>
     <tbody>
-        <tr> <td>as</td>       <td>:</td>       </tr>
-        <tr> <td>is</td>       <td>=</td>       </tr>
-        <tr> <td>mimics</td>   <td>-&gt;</td>   </tr>
-        <tr> <td>observes</td> <td>&lt;-</td>   </tr>
+        <tr> <td>as</td>          <td>:</td>       </tr>
+        <tr> <td>mimics</td>      <td>-&gt;</td>   </tr>
+        <tr> <td>observes</td>    <td>&lt;-</td>   </tr>
     </tbody>
 </table>
 
