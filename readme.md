@@ -200,12 +200,12 @@ print reactiveGrandparents      // ['dave']
 ###Assignment
 <table>
     <thead>
-        <tr> <th>Keywords</th>    <th>Symbols</th> </tr>
+        <tr> <th>Keywords</th> <th>Symbols</th> </tr>
     </thead>
     <tbody>
-        <tr> <td>as</td>          <td>:</td>       </tr>
-        <tr> <td>mimics</td>      <td>-&gt;</td>   </tr>
-        <tr> <td>observes</td>    <td>&lt;-</td>   </tr>
+        <tr> <td>as</td>       <td>:</td>       </tr>
+        <tr> <td>captures</td> <td>-&gt;</td>   </tr>
+        <tr> <td>observes</td> <td>&lt;-</td>   </tr>
     </tbody>
 </table>
 
