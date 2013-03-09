@@ -4,9 +4,9 @@
 ## usage
 basic variables:
 ```python
-def a int = 1
-def b bool = true
-def c string = "hello world"
+a int = 1
+b bool = true
+c string = "hello world"
 
 print a, b, c
 # 1, true, "hello world"
@@ -24,7 +24,7 @@ print returns(a), returns(b), returns(c)
 
 signals ( "mutable" variables ):
 ```python
-def a sig int <- 1
+a sig int <- 1
 
 print a
 # 1 
@@ -37,8 +37,8 @@ print a
 
 getting a reaction:
 ```python
-def a sig int <- 1
-def b int = a + 1
+a sig int <- 1
+b int = a + 1
 
 print a, b
 # 1, 2
@@ -51,9 +51,9 @@ print a, b
 
 getting no reaction:
 ```python
-def a sig int <- 1
+a sig int <- 1
 # capture the value of a using a()
-def b int = a() + 1
+b int = a() + 1
 
 print a, b
 # 1, 2
@@ -94,8 +94,8 @@ print add_five 3
 
 proper signals:
 ```python
-def a sig int = input.mouse.x
-def b int = a + 1
+a sig int = input.mouse.x
+b int = a + 1
 
 # move mouse to first pixel column left
 print a, b
@@ -108,8 +108,8 @@ print a, b
 
 events:
 ```python
-def a evt int = input.mouse.button1
-def b int = a + 1
+a evt int = input.mouse.button1
+b int = a + 1
 
 print a, b
 # 0, 1
