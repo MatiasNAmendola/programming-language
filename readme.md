@@ -22,14 +22,14 @@ print returns(a), returns(b), returns(c)
 # float, bool, string
 ```
 
-mutable variables:
+signals ( "mutable" variables ):
 ```python
-mut a int = 1
+def a sig int <- 1
 
 print a
 # 1 
 
-a = 2
+a <- 2
 
 print a
 # 2 
@@ -37,13 +37,13 @@ print a
 
 getting a reaction:
 ```python
-mut a int = 1
+def a sig int <- 1
 def b int = a + 1
 
 print a, b
 # 1, 2
 
-a = 2
+a <- 2
 
 print a, b
 # 2, 3
@@ -51,14 +51,14 @@ print a, b
 
 getting no reaction:
 ```python
-mut a int = 1
+def a sig int <- 1
 # capture the value of a using a()
 def b int = a() + 1
 
 print a, b
 # 1, 2
 
-a = 2
+a <- 2
 
 print a, b
 # 2, 2
@@ -70,10 +70,10 @@ basic functions:
 def a() int = 2
 def square(x int) int = x * x
 
-print square(a)
+print square a
 # 4
 
-print square(4)
+print square 4
 # 16
 ```
 
@@ -82,44 +82,56 @@ currying functions:
 def add(x, y int) int =
   x + y
 
-print add(2, 2)
+print add 2, 2
 # 4
 
 # implicit return type
-def add_five = add(5)
+def add_five = add 5
 
 print add_five 3
 # 8
+```
 
+proper signals:
+```python
+def a sig int = input.mouse.x
+def b int = a + 1
+
+# move mouse to first pixel column left
+print a, b
+# 1, 2
+
+# move mouse to second pixel column from left
+print a, b
+# 2, 3
+```
+
+events:
+```python
+def a evt int = input.mouse.button1
+def b int = a + 1
+
+print a, b
+# 0, 1
+
+# click left mouse button
+print a, b
+# 1, 2
 ```
 
 ## keywords and symbols
-### propositionals
+### keywords
 <table>
     <thead>
-        <tr> <th>keywords</th> <th>symbols</th>    </tr>
+        <tr> <th>keyword</th> <th>usage</th> </tr>
     </thead>
     <tbody>
-        <tr> <td>implies</td>  <td>=></td>         </tr>
-        <tr> <td>or</td>       <td>||</td>         </tr>
-        <tr> <td>xor</td>      <td>|||</td>        </tr>
-        <tr> <td>not</td>      <td>!</td>          </tr>
-        <tr> <td>and</td>      <td>&amp;&amp;</td> </tr>
-        <tr> <td>eqv</td>      <td>===</td>        </tr>
+        <tr> <td>def</td>  <td>define a function</td> </tr>
+
     </tbody>
 </table>
 
-### predicates
-<table>
-    <thead>
-        <tr> <th>keywords</th>  <th>symbols</th>     </tr>
-    </thead>
-    <tbody>
-        <tr> <td>is</td>        <td>f(x)</td>        </tr>
-        <tr> <td>leastone</td>  <td>E.predicate</td> </tr>
-        <tr> <td>every</td>     <td>A.predicate</td> </tr>
-    </tbody>
-</table>
+
 
 ### conditionals
 <table>
@@ -133,18 +145,6 @@ print add_five 3
         <tr> <td>gt</td>       <td>&gt;</td>    </tr>
         <tr> <td>le</td>       <td>&lt;=</td>   </tr>
         <tr> <td>ge</td>       <td>&gt;=</td>   </tr>
-    </tbody>
-</table>
-
-### assignment
-<table>
-    <thead>
-        <tr> <th>keywords</th> <th>symbols</th> </tr>
-    </thead>
-    <tbody>
-        <tr> <td>as</td>       <td>:</td>       </tr>
-        <tr> <td>captures</td> <td>-&gt;</td>   </tr>
-        <tr> <td>observes</td> <td>&lt;-</td>   </tr>
     </tbody>
 </table>
 
