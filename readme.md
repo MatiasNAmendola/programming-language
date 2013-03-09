@@ -1,156 +1,81 @@
 #[programming language][1] ![build status][2]
-*a proposal for a new functional, reactive, and logical programming language.*
+*a proposal for a new programming language.*
 
 ## usage
+basic variables:
+```python
+def a int = 1
+def b bool = true
+def c string = "hello world"
 
-### logic
-```js
-inference:
-    every man is mortal
-    socrates is man
-
-print inference['socrates is mortal'] // true
+print a, b, c
+# 1, true, "hello world"
 ```
 
-### functions
-```js
-mult(x, y) ->
-    x * y
+implicit variables:
+```python
+a = 1.0
+b = true
+c = "hello world"
 
-print mult(5, 4) // 20
+print type(a), type(b), type(c)
+# float, bool, string
 ```
 
-### synergy
-```js
-library:
-    every man is mortal
-    socrates is man
-    kitteh is mortal
+mutable variables:
+```python
+mut a int = 1
 
-is_mortal(x) ->
-    library[x + 'is mortal']
+print a
+# 1 
 
-is_man(x) ->
-    library[x + 'is man']
+a = 2
 
-print is_mortal(socrates) // true
-print is_man(socrates)    // true
-
-print is_mortal(kitteh) // true
-print is_man(kitteh)    // false
+print a
+# 2 
 ```
 
-### syntactic sugar
-using keywords:
+getting a reaction:
+```python
+mut a int = 1
+def b int = a + 1
 
-```js
-parents as
-    david, john, jake is man
-    jane is woman
-    spark is dog
+print a, b
+# 1, 2
 
-    every man is mortal, human
-    every woman is mortal, human
-    every dog is mortal
+a = 2
 
-    parent(jake, john)
-    parent(john, david)
-
-    grandparent(X, Y) implies
-        parent(X, A) and parent(A, Y)
-
-
-
-print parents['grandparent(jake, david)'] // true
-print parents['X is human']               // ['david', 'jane']
-print parents['X is mortal']              // ['david', 'jane', 'spark']
-print parents['leastone dog(X) is human(X)'] // true
+print a, b
+# 2, 3
 ```
 
-using symbols:
+getting no reaction:
+```python
+mut a int = 1
+# capture the value of a using a()
+def b int = a() + 1
 
-```js
-parents:
-    man(david)
-    man(john)
-    man(jake)
-    woman(jane)
-    dog(spark)
+print a, b
+# 1, 2
 
-    mortal(X) => man(X) || woman(X) || dog(X)
-    human(X) => man(X) || woman(X)
+a = 2
 
-    parent(john, david)
-    parent(jake, john)
-
-    grandparent(X, Y) =>
-        parent(X, P) && parent(P, Y)
-
-print parents['grandparent(jake, david)'] // true
-print parents['human(X)']                 // ['david', 'jane']
-print parents['mortal(X)']                // ['david', 'jane', 'spark']
-print parents['!(E.dog(X) === human(X))'] // true
+print a, b
+# 2, 2
 ```
 
-### reactivity
+basic functions:
+```python
+def add(x, y int) int =
+  return x + y
 
-static variable assignment:
+print add(2, 2)
+# 4
 
-```js
-a -> 5
-b -> a + 1
-a -> 6
+def add_five = add(5)
 
-print a // 6
-print b // 6
-```
-
-reactive variable assignment:
-
-```js
-a -> 5
-b &lt;- x + 1
-a -> 6
-
-print a // 6
-print b // 7
-```
-
-### reactive vs. static
-```js
-library:
-    david, john, dave is man
-    jane is woman
-
-    parent(john, david)
-    parent(dave, john)
-    parent(jane, john)
-
-    grandparent(X, Y) implies
-        parent(X, P) and parent(P, Y)
-
-get_static_grandparents() ->
-    // **query** returns a list of the unifications of each variable.
-    library.query 'grandparent(X, Y)', (x, y) -> x
-
-get_reactive_grandparents() &lt;-
-    library.query 'grandparent(X, Y)', (x, y) -> x
-
-static_grandparents   -> get_reactive_grandparents()
-reactive_grandparents &lt;- get_reactive_grandparents()
-
-print get_static_grandparents() // ['dave', 'jane']
-print get_reactive_grandparents() // ['dave', 'jane']
-print static_grandparents         // ['dave', 'jane']
-print reactive_grandparents       // ['dave', 'jane']
-
-// Removes any contradictions, i.e., `parent(jane, john)`.
-lib.merge('jane is not parent of john')
-
-print get_static_grandparents() // ['dave', 'jane']
-print get_reactive_grandparents() // ['dave']
-print static_grandparents         // ['dave', 'jane']
-print reactive_grandparents       // ['dave']
+print add_five 3
+# 8
 
 ```
 
@@ -188,8 +113,8 @@ print reactive_grandparents       // ['dave']
         <tr> <th>keywords</th> <th>symbols</th> </tr>
     </thead>
     <tbody>
-        <tr> <td>eq</td>       <td>==</td>      </tr>
-        <tr> <td>eqv</td>      <td>===</td>     </tr>
+        <tr> <td>eqv</td>      <td>==</td>      </tr>
+        <tr> <td>eq</td>       <td>===</td>     </tr>
         <tr> <td>lt</td>       <td>&lt;</td>    </tr>
         <tr> <td>gt</td>       <td>&gt;</td>    </tr>
         <tr> <td>le</td>       <td>&lt;=</td>   </tr>
