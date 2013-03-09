@@ -18,7 +18,7 @@ a = 1.0
 b = true
 c = "hello world"
 
-print type(a), type(b), type(c)
+print returns(a), returns(b), returns(c)
 # float, bool, string
 ```
 
@@ -66,12 +66,26 @@ print a, b
 
 basic functions:
 ```python
+# variables were functions all along
+def a() int = 2
+def square(x int) int = x * x
+
+print square(a)
+# 4
+
+print square(4)
+# 16
+```
+
+currying functions:
+```python
 def add(x, y int) int =
-  return x + y
+  x + y
 
 print add(2, 2)
 # 4
 
+# implicit return type
 def add_five = add(5)
 
 print add_five 3
