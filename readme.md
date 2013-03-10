@@ -67,13 +67,25 @@ print add_five(3)
 
 ### reactions
 #### using signals
+```python
+```
+
 
 #### using events
+```python
+```
+
 
 ### samples
 #### by capturing
+```python
+```
+
 
 #### by deltas
+```python
+```
+
 
 ### lists
 
@@ -162,29 +174,32 @@ print a, b
 ## keywords and symbols
 ### keywords
 <table>
-    <thead>
-        <tr> <th>keyword</th> <th>usage</th> </tr>
-    </thead>
-    <tbody>
-        <tr> <td>def</td>  <td>define a function</td> </tr>
-
-    </tbody>
+  <thead>
+    <tr> <th>keyword</th> <th>usage</th> </tr>
+  </thead>
+  <tbody>
+    <tr> <td>evt</td>  <td>define an event</td> </tr>
+    <tr> <td>def</td>  <td>define a function</td> </tr>
+    <tr> <td>as</td>  <td>denotes function with unnamed arguments</td> </tr>
+    <tr> <td>sig</td>  <td>define a signal</td> </tr>
+  </tbody>
 </table>
 
 
 
-### conditionals
+### symbols
+#### keyword aliases
 <table>
     <thead>
-        <tr> <th>keywords</th> <th>symbols</th> </tr>
+        <tr> <th>symbols</th> <th>keyword</th> </tr>
     </thead>
     <tbody>
-        <tr> <td>eqv</td>      <td>==</td>      </tr>
-        <tr> <td>eq</td>       <td>===</td>     </tr>
-        <tr> <td>lt</td>       <td>&lt;</td>    </tr>
-        <tr> <td>gt</td>       <td>&gt;</td>    </tr>
-        <tr> <td>le</td>       <td>&lt;=</td>   </tr>
-        <tr> <td>ge</td>       <td>&gt;=</td>   </tr>
+        <tr> <td>==</td>   <td>eqv</td>      </tr>
+        <tr> <td>===</td>  <td>eq</td>     </tr>
+        <tr> <td>&lt;</td> <td>lt</td>    </tr>
+        <tr> <td>&gt;</td> <td>gt</td>    </tr>
+        <tr> <td>&&</td>   <td>and</td>   </tr>
+        <tr> <td>||</td>   <td>or</td>   </tr>
     </tbody>
 </table>
 
