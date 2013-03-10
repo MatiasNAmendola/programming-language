@@ -62,11 +62,15 @@ def contains_zero((Int, Int)) as
   # underscore means ignore argument
   _, 0 = True
   0, _ = True
-  _, _ = false
+  _, _ = False
 
 print contains_zero((0, 0)), contains_zero((0, 1)), contains_zero((1, 0)), contains_zero((1, 1))
 # True, True, True, False
 ```
+
+
+### lists
+
 
 ### signals
 #### basic
@@ -82,33 +86,48 @@ print a
 # 2
 ```
 
-#### user controlled
+#### user defined
 ```python
-a sig Int <- 1
-
-print a
-# 1 
-
-a <- 2
-
-print a
-# 2
-
-a <- 3
-a <- 4
-a <- 5
+a sig Int <- [1, 2, 3]
 
 # a signal holds it's most recent value
-print a
-# 5
+print a, a, a, a
+# 1, 2, 3, 3
+
+# [1..] means a list containing values from 1 to infinity
+b sig Int <- [1..]
+
+print b, b, b #, b, ...
+# 1, 2, 3 #, 4, ...
 ```
 
 ### events
+#### basic
+```python
+a evt Int = event.mouse.button1
+
+print a
+# 0
+
+# click left mouse button once
+print a
+# 1
+```
 
 
 ### reactions
 #### using signals
 ```python
+a sig Int <- sig.sensor.temperature
+b int = a + 1
+
+# it's 25 degress celcius
+print a, b
+# 25, 26
+
+# temperature rises to 26 degress
+print a, b
+# 26, 27
 ```
 
 
@@ -128,11 +147,11 @@ print a
 ```
 
 
-### lists
-
 ### aliases
 
+
 ### custon types
+
 
 ### structures
 
@@ -145,22 +164,10 @@ print a
 
 
 getting a reaction:
-```python
-a sig int <- 1
-b int = a + 1
-
-print a, b
-# 1, 2
-
-a <- 2
-
-print a, b
-# 2, 3
-```
 
 getting no reaction:
 ```python
-a sig int <- 1
+a sig Int <- 1
 # capture the value of a using a()
 b int = a() + 1
 
@@ -171,20 +178,6 @@ a <- 2
 
 print a, b
 # 2, 2
-```
-
-
-events:
-```python
-a evt int = input.mouse.button1
-b int = a + 1
-
-print a, b
-# 0, 1
-
-# click left mouse button
-print a, b
-# 1, 2
 ```
 
 ## keywords and symbols
