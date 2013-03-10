@@ -106,11 +106,9 @@ print b, b, b #, b, ...
 ```python
 a evt Int = event.mouse.button1
 
-print a
+print_on a
 # 0
-
 # click left mouse button once
-print a
 # 1
 ```
 
@@ -118,7 +116,7 @@ print a
 ### reactions
 #### using signals
 ```python
-a sig Int <- sig.sensor.temperature
+a sig Int <- signal.sensor.temperature
 b Int = a + 1
 
 # it's 25 degress celcius
@@ -133,15 +131,6 @@ print a, b
 
 #### using events
 ```python
-a evt Int = event.mouse.button1
-b Int = a + 1
-
-print a, b
-# 0, 1
-
-# click left mouse button once
-print a
-# 1, 2
 ```
 
 
