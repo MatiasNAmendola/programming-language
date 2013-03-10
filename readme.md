@@ -119,7 +119,7 @@ print a
 #### using signals
 ```python
 a sig Int <- sig.sensor.temperature
-b int = a + 1
+b Int = a + 1
 
 # it's 25 degress celcius
 print a, b
@@ -133,17 +133,33 @@ print a, b
 
 #### using events
 ```python
+a evt Int = event.mouse.button1
+b Int = a + 1
+
+print a, b
+# 0, 1
+
+# click left mouse button once
+print a
+# 1, 2
 ```
 
 
-### samples
+### sampling
 #### by capturing
 ```python
-```
+a sig Int <- sig.sensor.temperature
+# just like our reactive example but note the invocation of a
+b Int = a() + 1
 
+# it's 25 degress celcius
+print a, b
+# 25, 26
 
-#### by deltas
-```python
+# temperature rises to 26 degress
+print a, b
+# 26, 26
+# notice how the value of b isn't reactive
 ```
 
 
@@ -155,30 +171,6 @@ print a, b
 
 ### structures
 
-
-
-
-
-
-
-
-
-getting a reaction:
-
-getting no reaction:
-```python
-a sig Int <- 1
-# capture the value of a using a()
-b int = a() + 1
-
-print a, b
-# 1, 2
-
-a <- 2
-
-print a, b
-# 2, 2
-```
 
 ## keywords and symbols
 ### keywords
