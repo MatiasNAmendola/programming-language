@@ -2,25 +2,93 @@
 *a proposal for a new programming language.*
 
 ## usage
-basic variables:
+### variables
+#### basics:
 ```python
-a int = 1
-b bool = true
-c string = "hello world"
+a = 1
+b = true
+c = "hello world"
 
 print a, b, c
 # 1, true, "hello world"
 ```
 
-implicit variables:
+#### explicit types:
 ```python
-a = 1.0
-b = true
-c = "hello world"
+a Float = 1
+b Int = 1.5
 
-print returns(a), returns(b), returns(c)
-# float, bool, string
+print a, b
+# 1.0, 1
 ```
+
+### functions
+#### basics
+```python
+# variables have been functions all along
+def a() Int = 2
+
+def square(x Int) Int =
+  x * x
+
+print square(a), square(4)
+# 4, 16
+```
+
+#### currying
+```python
+def add(x, y Int) Int = x + y
+
+def add_five = add 5
+
+print add(2, 2), add_five(3)
+# 4, 8
+```
+
+#### lamdas
+```python
+def add(a Int) = ((x Int) = a + x)
+
+def add_five = add 5
+
+print add_five(3)
+# 8
+```
+
+#### unamed arguments
+```python
+```
+
+### signals
+
+
+### events
+
+
+### reactions
+#### using signals
+
+#### using events
+
+### samples
+#### by capturing
+
+#### by deltas
+
+### lists
+
+### aliases
+
+### custon types
+
+### structures
+
+
+
+
+
+
+
 
 signals ( "mutable" variables ):
 ```python
@@ -62,34 +130,6 @@ a <- 2
 
 print a, b
 # 2, 2
-```
-
-basic functions:
-```python
-# variables were functions all along
-def a() int = 2
-def square(x int) int = x * x
-
-print square a
-# 4
-
-print square 4
-# 16
-```
-
-currying functions:
-```python
-def add(x, y int) int =
-  x + y
-
-print add 2, 2
-# 4
-
-# implicit return type
-def add_five = add 5
-
-print add_five 3
-# 8
 ```
 
 proper signals:
