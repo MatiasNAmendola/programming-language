@@ -57,14 +57,14 @@ print add_five(3)
 
 #### unamed arguments
 ```python
-def contains_zero((Int, Int)) as
+def contains_zero(Int, Int) as
   0, 0 = True
   # underscore means ignore argument
   _, 0 = True
   0, _ = True
   _, _ = False
 
-print contains_zero((0, 0)), contains_zero((0, 1)), contains_zero((1, 0)), contains_zero((1, 1))
+print contains_zero(0, 0), contains_zero(0, 1), contains_zero(1, 0), contains_zero(1, 1)
 # True, True, True, False
 ```
 
