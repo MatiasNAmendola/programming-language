@@ -57,10 +57,51 @@ print add_five(3)
 
 #### unamed arguments
 ```python
+def contains_zero((Int, Int)) as
+  0, 0 = True
+  # underscore means ignore argument
+  _, 0 = True
+  0, _ = True
+  _, _ = false
+
+print contains_zero((0, 0)), contains_zero((0, 1)), contains_zero((1, 0)), contains_zero((1, 1))
+# True, True, True, False
 ```
 
 ### signals
+#### basic
+```python
+a sig Int = signal.mouse.x
 
+# move mouse to first pixel column from the left on screen
+print a
+# 1
+
+# move mouse to second pixel column from the left on screen
+print a
+# 2
+```
+
+#### user controlled
+```python
+a sig Int <- 1
+
+print a
+# 1 
+
+a <- 2
+
+print a
+# 2
+
+a <- 3
+a <- 4
+a <- 5
+
+# a signal holds it's most recent value
+print a
+# 5
+```
 
 ### events
 
@@ -102,18 +143,6 @@ print add_five(3)
 
 
 
-signals ( "mutable" variables ):
-```python
-a sig int <- 1
-
-print a
-# 1 
-
-a <- 2
-
-print a
-# 2 
-```
 
 getting a reaction:
 ```python
@@ -144,19 +173,6 @@ print a, b
 # 2, 2
 ```
 
-proper signals:
-```python
-a sig int = input.mouse.x
-b int = a + 1
-
-# move mouse to first pixel column left
-print a, b
-# 1, 2
-
-# move mouse to second pixel column from left
-print a, b
-# 2, 3
-```
 
 events:
 ```python
@@ -178,10 +194,10 @@ print a, b
     <tr> <th>keyword</th> <th>usage</th> </tr>
   </thead>
   <tbody>
-    <tr> <td>evt</td>  <td>define an event</td> </tr>
-    <tr> <td>def</td>  <td>define a function</td> </tr>
-    <tr> <td>as</td>  <td>denotes function with unnamed arguments</td> </tr>
-    <tr> <td>sig</td>  <td>define a signal</td> </tr>
+    <tr> <td>evt a</td> <td>define an event of type a</td>               </tr>
+    <tr> <td>def</td>   <td>define a function</td>                       </tr>
+    <tr> <td>as</td>    <td>denotes function with unnamed arguments</td> </tr>
+    <tr> <td>sig a</td> <td>define a signal of type a</td>               </tr>
   </tbody>
 </table>
 
@@ -191,7 +207,7 @@ print a, b
 #### keyword aliases
 <table>
     <thead>
-        <tr> <th>symbols</th> <th>keyword</th> </tr>
+        <tr> <th>symbol</th> <th>keyword</th> </tr>
     </thead>
     <tbody>
         <tr> <td>==</td>   <td>eqv</td>      </tr>
@@ -200,6 +216,29 @@ print a, b
         <tr> <td>&gt;</td> <td>gt</td>    </tr>
         <tr> <td>&&</td>   <td>and</td>   </tr>
         <tr> <td>||</td>   <td>or</td>   </tr>
+    </tbody>
+</table>
+
+
+#### unaliased symbols
+<table>
+    <thead>
+        <tr> <th>symbol</th> <th>name</th> <th>usage</th> </tr>
+    </thead>
+    <tbody>
+        <tr> <td>=</td>     <td>equals</td> <td>define a function</td>                  </tr> 
+        <tr> <td>&lt;-</td> <td>pipe</td>   <td>simulate input into a signal/event</td> </tr>  
+    </tbody>
+</table>
+
+
+#### operaters
+<table>
+    <thead>
+        <tr> <th>symbol</th> <th>name</th> <th>usage</th> </tr>
+    </thead>
+    <tbody>
+        <tr> <td>+</td> <td>addition</td> <td>add two values</td> </tr>   
     </tbody>
 </table>
 
