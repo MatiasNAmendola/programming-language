@@ -70,7 +70,8 @@ print contains_zero((0, 0)), contains_zero((0, 1)), contains_zero((1, 0)), conta
 
 
 ### lists
-
+```python
+```
 
 ### signals
 #### basic
@@ -153,12 +154,16 @@ print a, b
 
 
 ### aliases
-
+```python
+```
 
 ### custon types
-
+```python
+```
 
 ### structures
+```python
+```
 
 
 ## keywords and symbols
