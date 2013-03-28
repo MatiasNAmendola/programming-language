@@ -16,7 +16,7 @@ print a, b, c
 #### explicit types:
 ```python
 a Float = 1
-b Int = 1.5
+b Int   = 1.5
 
 print a, b
 # 1.0, 1
@@ -47,7 +47,7 @@ print add(2, 2), add_five(3)
 
 #### lamdas
 ```python
-def add(a Int) = ((x Int) = a + x)
+def add(a Int) = \x Int -> a + x\
 
 def add_five = add 5
 
@@ -66,6 +66,18 @@ def contains_zero(Int, Int) as
 
 print contains_zero(0, 0), contains_zero(0, 1), contains_zero(1, 0), contains_zero(1, 1)
 # True, True, True, False
+```
+
+#### more unamed arguments
+```python
+def add(Int, Int) as
+  0, 0 = 0
+  x, 0 = x
+  0, y = y
+  x, y = add x + 1, y - 1
+
+print add(0, 0), add(0, 1), add(1, 0), add(1, 1)
+# 0, 1, 1, 2
 ```
 
 
@@ -87,30 +99,16 @@ print a
 # 2
 ```
 
-#### user defined
-```python
-a sig Int <- [1, 2, 3]
-
-# a signal holds it's most recent value
-print a, a, a, a
-# 1, 2, 3, 3
-
-# [1..] means a list containing values from 1 to infinity
-b sig Int <- [1..]
-
-print b, b, b #, b, ...
-# 1, 2, 3 #, 4, ...
-```
-
 ### events
 #### basic
 ```python
 a evt Int = event.mouse.button1
 
 print_on a
-# 0
-# click left mouse button once
+# click left mouse button
 # 1
+# click left mouse button again
+# 2
 ```
 
 
@@ -120,11 +118,11 @@ print_on a
 a sig Int <- signal.sensor.temperature
 b Int = a + 1
 
-# it's 25 degress celcius
+# it's 25 degrees celsius
 print a, b
 # 25, 26
 
-# temperature rises to 26 degress
+# temperature rises to 26 degrees
 print a, b
 # 26, 27
 ```
@@ -205,8 +203,8 @@ print a, b
         <tr> <th>symbol</th> <th>name</th> <th>usage</th> </tr>
     </thead>
     <tbody>
-        <tr> <td>=</td>     <td>equals</td> <td>define a function</td>                  </tr> 
-        <tr> <td>&lt;-</td> <td>pipe</td>   <td>simulate input into a signal/event</td> </tr>  
+        <tr> <td>=</td>     <td>equals</td> <td>define a function</td>                  </tr>
+        <tr> <td>&lt;-</td> <td>pipe</td>   <td>simulate input into a signal/event</td> </tr>
     </tbody>
 </table>
 
@@ -217,7 +215,7 @@ print a, b
         <tr> <th>symbol</th> <th>name</th> <th>usage</th> </tr>
     </thead>
     <tbody>
-        <tr> <td>+</td> <td>addition</td> <td>add two values</td> </tr>   
+        <tr> <td>+</td> <td>addition</td> <td>add two values</td> </tr>
     </tbody>
 </table>
 
