@@ -1,5 +1,5 @@
-### signals
-#### basic
+# signals
+## basic
 ```python
 a sig Int = signal.mouse.x
 
@@ -11,4 +11,3 @@ print a
 print a
 # 2
 ```
-

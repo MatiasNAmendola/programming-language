@@ -1,5 +1,5 @@
-### reactions
-#### using signals
+# reactions
+## using signals
 ```python
 a sig Int <- signal.sensor.temperature
 b Int = a + 1

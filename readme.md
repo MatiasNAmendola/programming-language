@@ -23,7 +23,7 @@ it.. don't judge me. ☺
 the documentation is all over the place right now. once i get my act together i
 shall provide an index here for easy navigation throughout the language's
 features and concepts. in the mean time just take a stroll through the
-directories and see what you can find. think of it as and adventure! \(:D)/
+directories and see what you can find. think of it as and adventure! \\(:D)/
 
 
 ## license

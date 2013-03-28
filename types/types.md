@@ -1,4 +1,2 @@
-### custom types
-```python
-```
+# types
 

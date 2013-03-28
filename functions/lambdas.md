@@ -1,4 +1,4 @@
-#### lambdas
+# lambdas
 ```python
 def add(a Int) = \x Int -> a + x\
 

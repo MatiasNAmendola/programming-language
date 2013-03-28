@@ -1,5 +1,5 @@
-### events
-#### basic
+# events
+## basic
 ```python
 a evt Int = event.mouse.button1
 
