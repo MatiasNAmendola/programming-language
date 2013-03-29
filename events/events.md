@@ -1,9 +1,8 @@
 # events
-## basic
 ```python
-a evt Int = event.mouse.button1
+mouse_clicks evt(Int) = evt.mouse.button.1
 
-print_on a
+print_on mouse_clicks
 # click left mouse button
 # 1
 # click left mouse button again

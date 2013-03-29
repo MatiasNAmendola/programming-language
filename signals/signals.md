@@ -1,13 +1,13 @@
 # signals
 ## basic
 ```python
-a sig Int = signal.mouse.x
+x sig(Int) = sig.mouse.x
+y sig(Int) = sig.mouse.y
 
-# move mouse to first pixel column from the left on screen
-print a
-# 1
+# setup signal handler
+print_when (x is 1) and (y is 1),
+           "your mouse touched the top left corner of the screen!"
 
-# move mouse to second pixel column from the left on screen
-print a
-# 2
+# move mouse to top left corner of the screen
+# "your mouse touched the top left corner of the screen!"
 ```

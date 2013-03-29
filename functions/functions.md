@@ -1,16 +1,16 @@
-# variables
+# functions
 ## basics
 ```python
 a = 1
-b = true
+b = True
 c = "hello world"
 
-# a = 1
-# b = true
-# c = "hello world"
+print a, b, c
+# 1, True, "hello world"
 ```
 
-## explicit types
+
+## explicit return types
 ```python
 a Float = 1
 b Int   = 1.5
@@ -20,9 +20,8 @@ print a, b
 ```
 
 
-## proper function definitions
+## complete function definitions
 ```python
-# variables have been functions all along
 def a() Int = 2
 
 def square(x Int) Int =

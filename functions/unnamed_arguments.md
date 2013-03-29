@@ -1,28 +1,33 @@
 # unnamed arguments
 ## basic
-
-
-## more unnamed arguments
 ```python
-def add(Int, Int) as
-  0, 0 = 0
-  x, 0 = x
-  0, y = y
-  x, y = add x + 1, y - 1
+def add(Int, Int) Int as
+  x, y = x + y
 
-print add(0, 0), add(0, 1), add(1, 0), add(1, 1)
-# 0, 1, 1, 2
+print add(7)
+# 14
 ```
+
+
+## pattern matching
+```python
+def is_one_seven(Int, Int) as
+  x, 7 = "yes, the second"
+  7, y = "yes, the first"
+  x, y = "no, just " ++ x ++ " and " ++ y
+
+print is_one_seven(0, 7), is_one_seven(7, 0), is_one_seven(5, 9)
+# "yes, the second", "yes, the first", "no, just 5 and 9"
+```
+
 
 ## catch all
 ```python
-def contains_zero(Int, Int) as
-  0, 0 = True
-  # underscore means ignore argument
-  _, 0 = True
-  0, _ = True
+def is_one_seven(Int, Int) as
+  _, 7 = True
+  7, _ = True
   _, _ = False
 
-print contains_zero(0, 0), contains_zero(0, 1), contains_zero(1, 0), contains_zero(1, 1)
-# True, True, True, False
+print is_one_seven(0, 7), is_one_seven(7, 0), is_one_seven(5, 9)
+# True, True, False
 ```
