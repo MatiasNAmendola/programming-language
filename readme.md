@@ -1,4 +1,4 @@
-#[programming language][1] [![build status][2][3]
+#[programming language][1] [![build status][2]][3]
 *a proposal for a new programming language.*
 
 ## usage
